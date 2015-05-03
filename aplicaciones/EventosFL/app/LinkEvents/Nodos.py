@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import request, session, Blueprint, json
+from flask.ext import restful
+from flask.ext.bcrypt import Bcrypt
+from flask.ext.httpauth import HTTPBasicAuth
 
 
 # Importando SQLAlchemy y conectando a la BD
@@ -17,6 +20,15 @@ import models
 
 
 Nodos = Blueprint('Nodos', __name__)
+
+# flask-restful
+api = restful.Api(app)
+ 
+# flask-bcrypt
+flask_bcrypt = Bcrypt(app)
+ 
+# flask-httpauth
+auth = HTTPBasicAuth()
 
 
 @Nodos.route('/nodos/ABorrarEvento')
